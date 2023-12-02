@@ -22,6 +22,11 @@ class Presupuesto{
         this.restante = Number(presupuesto);
         this.gastos = [];
     }
+
+    nuevoGasto(gasto){
+        this.gastos = [...this.gastos, gasto];
+        console.log(this.gastos);
+    }
 }
 
 class UI {
@@ -98,7 +103,16 @@ function agregarGasto(e){
         return;
     }
 
-    console.log('Agregando gasto')
+    // Opuesto a destructuring - Es un object literal, crea un objeto con las propiedades
+    const gasto = {nombre, cantidad, id: Date.now()};
+
+    // Añadir un nuevo gasto
+    presupuesto.nuevoGasto(gasto);
+
+    ui.imprimirAlerta('Gasto agregado correctamente')
+    
+    // Reinicia el formulario
+    formulario.reset()
 }
 
 
